@@ -1,0 +1,93 @@
+.section {
+  position: relative;
+  height: 100vh;
+}
+
+.section .section-center {
+  position:absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+#booking {
+font-family: 'Josefin Sans', sans-serif;
+background-image: url('/assets/img/mainpage.jpg');
+background-size: cover;
+background-position: center;
+}
+
+.search-form {
+  background-color: rgba(245, 238, 206, 0.719);
+  max-width: 768px;
+  width: 100%;
+  margin: auto;
+  padding: 30px;
+  border-radius: 3px;
+}
+
+.search-form .form-header {
+  text-align: center;
+}
+
+
+#divWeatherMain{
+  display: inline;
+  color: black;
+}
+
+.weatherWidgetRow{
+  display: inline;
+  margin:0 auto;
+  width: fit-content;
+}
+
+.sun{
+  margin-top: 10px;
+  color: rgb(255, 251, 7);
+  filter: drop-shadow( 1px 1px 10px rgb(255, 230, 0));
+}
+
+.moon{
+  margin-top: 10px;
+  color: white;
+  filter: drop-shadow( 1px 1px 10px white);
+}
+
+.cloud{
+  color: rgb(104, 175, 197);
+  filter: drop-shadow( 1px 1px 5px rgb(104, 175, 197));
+}
+
+.error{
+  color: red;
+}
+.search-form .form-group {
+  position: relative;
+  margin-bottom: 30px;
+}
+.search-form .form-label {
+	font-size: 14px;
+	font-weight: 700;
+	margin-bottom: 3px;
+	display: inline-block;
+	color: goldenrod;
+	text-transform: capitalize;
+}
+
+.search-form .submit-btn {
+	color: white;
+	background-color: goldenrod;
+	font-weight: 700;
+  width: 100%;
+	height: 50px;
+	border: none;
+	font-size: 14px;
+	text-transform: capitalize;
+	border-radius: 3px;
+
+  
+}
+

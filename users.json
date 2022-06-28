@@ -1,0 +1,15 @@
+{
+  "posts": [],
+  "singupUsers": [
+    {
+      "name": "example",
+      "surname": "example",
+      "email": "example@example.com",
+      "password": "example",
+      "id": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

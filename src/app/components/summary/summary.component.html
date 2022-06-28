@@ -1,0 +1,62 @@
+<div id="summary" class="section">
+  <div class="section-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+            <div class="fly-header"><h1>Wybrany lot:</h1></div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"> Z: {{flyData.whereF}}</li>
+              <li class="list-group-item"> Do: {{flyData.whereT}}
+                <div id="divWeatherMain" *ngIf="isShow">
+                  <div *ngIf="isDay" class="weatherWidgetRow">
+                    <i class="fas fa-2x fa-sun sun"></i>  
+                </div>   
+                <div *ngIf="!isDay" class="weatherWidgetRow">
+                    <i class="fas fa-3x fa-moon moon"></i>  
+                </div>   
+                  <div class="weatherWidgetRow"> {{tempCelsius}} &#8451;</div>
+              </div>
+              </li>
+              <li class="list-group-item"> Kiedy: {{flyData.whenF}}</li>
+              <li class="list-group-item"> Ilość pasażerów: {{flyData.passengersN}}</li>
+              <li class="list-group-item"> Cena: {{flyData.price}} PLN /os</li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+          <div class="fly-header"><h1>Szczegóły:</h1></div>
+          <div class="list-group list-group-flush">
+            <li *ngFor="let passenger of passengersInfo; let i=index" class="list-group-item">{{i+1}} Dane: {{passengersInfo[i].name}} Miejsce: {{flyData.bookedS[i]}}</li>
+            <li class="list-group-item">Bagaż rejestrowany x {{flyData.luggageC}} </li>
+          </div>
+          <div class="row"> 
+            <div class="col-md-8">
+              Całkowita cena: {{(exchangeValue | number: '.2-2')}}</div>
+            <div class="col-md-4">
+              <select class="form-select" [(ngModel)]="kindCurrency" (change)="getKindCurrency()">
+                <option selected value="" >PLN</option>
+                <option value="eur">EUR</option>
+                <option value="usd">USD</option>
+                <option value="brl">BRL</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <button type="button" class="btn end-btn" (click)="end()">Zakończ</button>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+

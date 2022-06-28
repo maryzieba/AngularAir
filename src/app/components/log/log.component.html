@@ -1,0 +1,26 @@
+<div class="modal-header">
+  <h4 class="modal-title">Zaloguj się</h4> 
+  <button type="button" class="close" aria-label="close" (click)="activeLogin.dismiss('Cross click')"></button>
+</div>
+  <div class="modal-body">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <div class="mb-3">
+        <label for="email" class="form-label">Adres email</label>
+        <input formControlName="email" type="email" class="form-control" id="email" placeholder="email@email.com">
+        <span class="text-denger" *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required','email')">To pole jest wymagane</span>
+        <span class="text-denger" *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('email','email')">Podaj poprawny email</span>
+      </div>
+
+      <div class="mb-3">
+        <label for="password"  class="form-label"> Hasło</label>
+        <input formControlName="password" type="password" class="form-control" id="password" placeholder="Hasło">
+        <span class="text-denger" *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')">To pole jest wymagane</span>
+        <span class="text-denger" *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('minlength','password')">Hasło jest za krótkie</span>
+
+      </div>
+      <div class="mb-3">      
+        <button type="submit" class="btn login"  [disabled]="!loginForm.valid"> Zaloguj się</button>
+      </div>
+    </form>
+    <p (click)="checkSingUp()">Nowy użytkownik? Kliknij aby się zarejestrować.</p>
+</div>

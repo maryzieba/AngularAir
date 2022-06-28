@@ -1,0 +1,40 @@
+<div class="modal-header">
+  <h4 class="modal-title">Zarejestruj się</h4> 
+  <button type="button" class="close" aria-label="close" (click)="activeSingup.dismiss('Cross click')"></button>
+</div>
+  <div class="modal-body">
+    <form [formGroup]="singupForm">
+      <div class="mb-3">
+        <label for="name" class="form-label">Imię</label>
+        <input type="text" class="form-control" id="name" formControlName="name" placeholder="Imię">
+        <span class="text-denger" *ngIf="singupForm.controls['name'].dirty && singupForm.hasError('required','name')">To pole jest wymagane</span>
+        <span class="text-denger" *ngIf="singupForm.controls['name'].dirty && singupForm.hasError('minlength','name')">Minimalna długość to 3 znaki</span>
+        <span class="text-denger" *ngIf="singupForm.controls['name'].dirty && singupForm.hasError('maxlength','name')">Maksymalna długość to 15 znaków</span>
+      </div>
+
+      <div class="mb-3">
+        <label for="surname" class="form-label">Nazwisko</label>
+        <input type="text" class="form-control" id="surname" formControlName="surname" placeholder="Nazwisko">
+        <span class="text-denger" *ngIf="singupForm.controls['surname'].dirty && singupForm.hasError('required','surname')">To pole jest wymagane</span>
+        <span class="text-denger" *ngIf="singupForm.controls['surname'].dirty && singupForm.hasError('minlength','surname')">Minimalna długość to 2 znaki</span>
+        <span class="text-denger" *ngIf="singupForm.controls['surname'].dirty && singupForm.hasError('maxlength','surname')">Maksymalna długość to 15 znaków</span>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Adres email</label>
+        <input type="email" class="form-control" id="email" formControlName="email" placeholder="email@email.com">
+        <span class="text-denger" *ngIf="singupForm.controls['email'].dirty && singupForm.hasError('required','email')">To pole jest wymagane.</span>
+        <span class="text-denger" *ngIf="singupForm.controls['email'].dirty && singupForm.hasError('email','email')">Podaj poprawny email</span>
+      </div>
+
+      <div class="mb-3">
+        <label for="password"  class="form-label"> Hasło</label>
+        <input type="password" class="form-control" id="password" formControlName="password" placeholder="Hasło.">
+        <span class="text-denger" *ngIf="singupForm.controls['password'].dirty && singupForm.hasError('required','password')">To pole jest wymagane</span>
+        <span class="text-denger" *ngIf="singupForm.controls['password'].dirty && singupForm.hasError('minlength','password')">Minimalna długość hasła to 6 znaków</span>
+        
+      </div>
+
+      <button class="btn singup" (click)="singUp()" [disabled]="!singupForm.valid" type="submit"> Zarejestruj się</button>
+    </form>
+</div>

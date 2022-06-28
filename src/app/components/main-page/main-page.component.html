@@ -1,0 +1,80 @@
+<div id="booking" class="section">
+  <div class="section-center">
+    <div class="container">
+      <div class="row">
+        <div class="search-form">
+          <div class="form-header">
+            <h1>Wyszukaj lot</h1>
+              <span>{{flyData.currentDate | date: 'dd.MM.yyyy'}} godzina: {{flyData.currentDate | date: 'HH:mm'}} </span> 
+              <div id="divWeatherMain" *ngIf="isShow">
+                <div *ngIf="isDay" class="weatherWidgetRow">
+                  <i class="fas fa-2x fa-sun sun"></i>  
+              </div>   
+              <div *ngIf="!isDay" class="weatherWidgetRow">
+                  <i class="fas fa-3x fa-moon moon"></i>  
+              </div>   
+                <div class="weatherWidgetRow"> {{tempCelsius}} &#8451;  {{city}}</div>
+            </div>
+          </div>
+          <form #searchForm="ngForm" (ngSubmit) ="getDataFlySearch(searchForm)">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group form-floating">
+                  <select class="form-select" ngModel (change)="chosenCity(searchForm)" name = "whereFrom" #whereFrom="ngModel" required>
+                    <option value="Kraków">Kraków </option>
+                    <option value="Warszawa"> Warszawa </option>
+                  </select>
+                  <label for="whereFrom">Miejsce wylotu: </label>
+                  <span *ngIf="whereFrom.invalid &&  whereFrom.touched">  
+                    <span class="error" *ngIf="whereFrom.errors?.['required']">Wybierz miejsce wylotu</span>
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group form-floating">
+                  <select class="form-select" ngModel name="whereTo" #whereTo="ngModel" required>
+                    <option value="Barcelona"> Barcelona </option>
+                    <option value="Ottawa"> Ottawa </option>
+                    <option value="Rio de Janeiro"> Rio de Janeiro </option>
+                  </select>
+                  <label for="whereTo">Miejsce przylotu:</label>
+                  <span *ngIf="whereTo.invalid &&  whereTo.touched">
+                    <span class="error" *ngIf="whereTo.errors?.['required']">Wybierz miejsce przylotu</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group form-floating">
+                  <input class="form-control" type="date" ngModel name="whenFrom" #whenFrom="ngModel" [min]="flyData.currentDate | date: 'yyyy-MM-dd'" required>
+                  <label for="whenFrom">Kiedy?</label>
+                  <span *ngIf="whenFrom.invalid &&  (whenFrom.touched || whenFrom.dirty)">
+                    <span class="error" *ngIf="whenFrom.errors?.['required']">Wybierz datę</span></span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group form-floating">
+                  <input class="form-control" type="number" ngModel  name="passengersNumber" #passengersNumber="ngModel" [min]="1" [max]="9" required>
+                  <label for="passengersNumber">Pasażerowie: </label>
+                  <span *ngIf="passengersNumber.invalid &&  (passengersNumber.touched || passengersNumber.dirty)">
+                    <span class="error" *ngIf="passengersNumber.errors?.['required']">Wybierz ilość pasażerów</span>
+                    <span class="error" *ngIf="passengersNumber.errors?.['min']">Należy wybrać minimum 1 pasażera</span>
+                    <span class="error" *ngIf="passengersNumber.errors?.['max']">Można dokonać rezerwacji dla maksymalnie 9 pasażerów</span>
+                  </span>
+                </div>
+              </div>
+              </div>
+              <button class="btn submit-btn" type="submit" [disabled]="!searchForm.valid">Szukaj</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
